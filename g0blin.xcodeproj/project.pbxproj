@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C4CC08812020F13300588B39 /* bootstrap.tar in Resources */ = {isa = PBXBuildFile; fileRef = C4CC08802020F13200588B39 /* bootstrap.tar */; };
 		EE0A1C281FF8891A001030DB /* SettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE0A1C271FF8891A001030DB /* SettingsController.m */; };
-		EE1C60E41FFACA3600D30AAC /* bootstrap.tar in Resources */ = {isa = PBXBuildFile; fileRef = EE1C60E31FFACA3500D30AAC /* bootstrap.tar */; };
 		EE65CCCE201EC198002F216F /* Meter.m in Sources */ = {isa = PBXBuildFile; fileRef = EE65CCCD201EC198002F216F /* Meter.m */; };
 		EE9402401FF33CAE00C9325F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EE94023F1FF33CAE00C9325F /* AppDelegate.m */; };
 		EE9402431FF33CAE00C9325F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE9402421FF33CAE00C9325F /* ViewController.m */; };
@@ -33,9 +33,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C4CC08802020F13200588B39 /* bootstrap.tar */ = {isa = PBXFileReference; lastKnownFileType = archive.tar; path = bootstrap.tar; sourceTree = "<group>"; };
 		EE0A1C261FF8891A001030DB /* SettingsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsController.h; sourceTree = "<group>"; };
 		EE0A1C271FF8891A001030DB /* SettingsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsController.m; sourceTree = "<group>"; };
-		EE1C60E31FFACA3500D30AAC /* bootstrap.tar */ = {isa = PBXFileReference; lastKnownFileType = archive.tar; path = bootstrap.tar; sourceTree = "<group>"; };
 		EE65CCCC201EC198002F216F /* Meter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Meter.h; sourceTree = "<group>"; };
 		EE65CCCD201EC198002F216F /* Meter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Meter.m; sourceTree = "<group>"; };
 		EE94023B1FF33CAE00C9325F /* g0blin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = g0blin.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,8 +138,8 @@
 				EE95FECF201EA10B00D5377E /* y0nkers.m4v */,
 				EE95FECD201EA0ED00D5377E /* grief.m4v */,
 				EE9DD8C9201E6D1000CE61E8 /* 0.reload.plist */,
+				C4CC08802020F13200588B39 /* bootstrap.tar */,
 				EE9DD8C8201E6D1000CE61E8 /* reload */,
-				EE1C60E31FFACA3500D30AAC /* bootstrap.tar */,
 				EE9828C61FF4187F0085B633 /* launchctl */,
 				EE9828C41FF4187F0085B633 /* tar */,
 			);
@@ -244,7 +244,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEC032D6201EDF8A00E70E6E /* y0nkers.m4v in Resources */,
-				EE1C60E41FFACA3600D30AAC /* bootstrap.tar in Resources */,
 				EE9828C81FF418800085B633 /* tar in Resources */,
 				EE9828CA1FF418800085B633 /* launchctl in Resources */,
 				EE95FECE201EA0ED00D5377E /* grief.m4v in Resources */,
@@ -252,6 +251,7 @@
 				EE9DD8CB201E6D1000CE61E8 /* 0.reload.plist in Resources */,
 				EE9DD8CA201E6D1000CE61E8 /* reload in Resources */,
 				EE9402481FF33CAE00C9325F /* Assets.xcassets in Resources */,
+				C4CC08812020F13300588B39 /* bootstrap.tar in Resources */,
 				EE9402461FF33CAE00C9325F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -411,11 +411,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 23C653WLNB;
+				DEVELOPMENT_TEAM = 3R2SCR9JW4;
 				INFOPLIST_FILE = g0blin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = net.sticktron.g0blin;
+				PRODUCT_BUNDLE_IDENTIFIER = net.arinc9.g0blin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = arm64;
@@ -427,11 +427,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 23C653WLNB;
+				DEVELOPMENT_TEAM = 3R2SCR9JW4;
 				INFOPLIST_FILE = g0blin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = net.sticktron.g0blin;
+				PRODUCT_BUNDLE_IDENTIFIER = net.arinc9.g0blin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = arm64;
