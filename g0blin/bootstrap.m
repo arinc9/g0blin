@@ -102,6 +102,13 @@ kern_return_t do_bootstrap(bool force) {
     }
     LOG("Cydia is installed");
     
+    // copy dropbear.plist
+    NSString *dropbearPlist = [[NSBundle mainBundle] URLForResource:@"dropbear" withExtension:@"plist"].path;
+    unlink("/Library/LaunchDaemons/dropbear.plist");
+    copyfile([dropbearPlist UTF8String], "/Library/LaunchDaemons/dropbear.plist", 0, COPYFILE_ALL);
+    chmod("/Library/LaunchDaemons/dropbear.plist", 0644);
+    chown("/Library/LaunchDaemons/dropbear.plist", 0, 0);
+    
     // copy reload script
     unlink("/usr/libexec/reload");
     NSString *reload = [[NSBundle mainBundle] URLForResource:@"reload" withExtension:@""].path;
