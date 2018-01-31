@@ -280,8 +280,6 @@ AVPlayerViewController *cont;
     // load user launchdaemons; do run commands
     gsystem("(echo 'really jailbroken'; launchctl load /Library/LaunchDaemons/0.reload.plist)&");
     
-    // OpenSSH workaround (won't load via launchdaemon)
-    gsystem("launchctl unload /Library/LaunchDaemons/com.openssh.sshd.plist;/usr/libexec/sshd-keygen-wrapper");
 
     LOG("finish() finished.");
 }
