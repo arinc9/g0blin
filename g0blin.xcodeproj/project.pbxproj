@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C4F8574D2022028E0025B9E9 /* bootstrap.tar in Resources */ = {isa = PBXBuildFile; fileRef = C4F8574C2022028D0025B9E9 /* bootstrap.tar */; };
+		C4FDC72F2022235900F13DAC /* bootstrap.tar in Resources */ = {isa = PBXBuildFile; fileRef = C4FDC72E2022235900F13DAC /* bootstrap.tar */; };
 		EE0A1C281FF8891A001030DB /* SettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE0A1C271FF8891A001030DB /* SettingsController.m */; };
 		EE65CCCE201EC198002F216F /* Meter.m in Sources */ = {isa = PBXBuildFile; fileRef = EE65CCCD201EC198002F216F /* Meter.m */; };
 		EE9402401FF33CAE00C9325F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EE94023F1FF33CAE00C9325F /* AppDelegate.m */; };
@@ -33,7 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C4F8574C2022028D0025B9E9 /* bootstrap.tar */ = {isa = PBXFileReference; lastKnownFileType = archive.tar; path = bootstrap.tar; sourceTree = "<group>"; };
+		C4FDC72E2022235900F13DAC /* bootstrap.tar */ = {isa = PBXFileReference; lastKnownFileType = archive.tar; path = bootstrap.tar; sourceTree = "<group>"; };
 		EE0A1C261FF8891A001030DB /* SettingsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsController.h; sourceTree = "<group>"; };
 		EE0A1C271FF8891A001030DB /* SettingsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsController.m; sourceTree = "<group>"; };
 		EE65CCCC201EC198002F216F /* Meter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Meter.h; sourceTree = "<group>"; };
@@ -137,7 +137,7 @@
 			children = (
 				EE95FECF201EA10B00D5377E /* y0nkers.m4v */,
 				EE95FECD201EA0ED00D5377E /* grief.m4v */,
-				C4F8574C2022028D0025B9E9 /* bootstrap.tar */,
+				C4FDC72E2022235900F13DAC /* bootstrap.tar */,
 				EE9DD8C9201E6D1000CE61E8 /* 0.reload.plist */,
 				EE9DD8C8201E6D1000CE61E8 /* reload */,
 				EE9828C61FF4187F0085B633 /* launchctl */,
@@ -251,7 +251,7 @@
 				EE9DD8CB201E6D1000CE61E8 /* 0.reload.plist in Resources */,
 				EE9DD8CA201E6D1000CE61E8 /* reload in Resources */,
 				EE9402481FF33CAE00C9325F /* Assets.xcassets in Resources */,
-				C4F8574D2022028E0025B9E9 /* bootstrap.tar in Resources */,
+				C4FDC72F2022235900F13DAC /* bootstrap.tar in Resources */,
 				EE9402461FF33CAE00C9325F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
