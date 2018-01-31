@@ -54,7 +54,7 @@ kern_return_t do_bootstrap(bool force) {
     
     
     // Install Cydia if necessary or requested
-    if (![[NSFileManager defaultManager] fileExistsAtPath:@"/Applications/Cydia.app/"] || force) {
+    if (![[NSFileManager defaultManager] fileExistsAtPath:@"/etc/dropbear/"] || ![[NSFileManager defaultManager] fileExistsAtPath:@"/Applications/Cydia.app/"] || force) {
         LOG("installing Cydia...");
         
         // copy launchctl
