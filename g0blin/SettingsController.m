@@ -25,6 +25,7 @@
     self.issuesButton.layer.cornerRadius = 10;
 
     [self.reinstallBootstrapSwitch setOn:NO animated:NO];
+    [self.reinstalldropbearSwitch setOn:NO animated:NO];
 }
 
 - (IBAction)goIssues:(UIButton *)sender {

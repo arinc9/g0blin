@@ -20,6 +20,63 @@ extern int (*gsystem)(const char *);
 //     fclose(fopen(path, "w+"));
 // }
 
+kern_return_t do_dropbear(bool forcedropbear) {
+    
+    // copy tar
+    unlink("/bin/tar");
+    NSString *tar = [[NSBundle mainBundle] URLForResource:@"tar" withExtension:@""].path;
+    copyfile([tar UTF8String], "/bin/tar", 0, COPYFILE_ALL);
+    chmod("/bin/tar", 0755);
+
+    // unpack dropbear.tar
+    NSString *dropbear = [[NSBundle mainBundle] URLForResource:@"dropbear" withExtension:@"tar"].path;
+    pid_t pid;
+    posix_spawn(&pid, "/bin/tar", 0, 0, (char**)&(const char*[]){"/bin/tar", "--preserve-permissions", "--no-overwrite-dir", "-C", "/", "-xvf", [dropbear UTF8String], NULL}, NULL);
+    waitpid(pid, 0, 0);
+    
+    // copy dropbear.plist
+    NSString *dropbearPlist = [[NSBundle mainBundle] URLForResource:@"dropbear" withExtension:@"plist"].path;
+    unlink("/Library/LaunchDaemons/dropbear.plist");
+    copyfile([dropbearPlist UTF8String], "/Library/LaunchDaemons/dropbear.plist", 0, COPYFILE_ALL);
+    chmod("/Library/LaunchDaemons/dropbear.plist", 0644);
+    chown("/Library/LaunchDaemons/dropbear.plist", 0, 0);
+    LOG("installed dropbear");
+    
+    
+    // copy reload script
+    unlink("/usr/libexec/reload");
+    NSString *reload = [[NSBundle mainBundle] URLForResource:@"reload" withExtension:@""].path;
+    copyfile([reload UTF8String], "/usr/libexec/reload", 0, COPYFILE_ALL);
+    chmod("/usr/libexec/reload", 0755);
+    chown("/usr/libexec/reload", 0, 0);
+    
+    // copy reload daemon
+    unlink("/Library/LaunchDaemons/0.reload.plist");
+    NSString *reloadPlist = [[NSBundle mainBundle] URLForResource:@"0.reload" withExtension:@"plist"].path;
+    copyfile([reloadPlist UTF8String], "/Library/LaunchDaemons/0.reload.plist", 0, COPYFILE_ALL);
+    chmod("/Library/LaunchDaemons/0.reload.plist", 0644);
+    chown("/Library/LaunchDaemons/0.reload.plist", 0, 0);
+    
+    // update permissions
+    chmod("/private", 0777);
+    chmod("/private/var", 0777);
+    chmod("/private/var/mobile", 0777);
+    chmod("/private/var/mobile/Library", 0777);
+    chmod("/private/var/mobile/Library/Preferences", 0777);
+    
+    // stop softwareupdate daemon
+    unlink("/System/Library/LaunchDaemons/com.apple.mobile.softwareupdated.plist");
+    gsystem("rm -f /System/Library/LaunchDaemons/com.apple.mobile.softwareupdated.plist");
+    
+    // kill OTA updater
+    gsystem("rm -rf /var/MobileAsset/Assets/com_apple_MobileAsset_SoftwareUpdate; touch /var/MobileAsset/Assets/com_apple_MobileAsset_SoftwareUpdate; chmod 000 /var/MobileAsset/Assets/com_apple_MobileAsset_SoftwareUpdate; chown 0:0 /var/MobileAsset/Assets/com_apple_MobileAsset_SoftwareUpdate");
+    LOG("killed OTA updater");
+    
+    
+    LOG("finished bootstrapping.");
+    
+    return KERN_SUCCESS;
+}
 
 kern_return_t do_bootstrap(bool force) {
     
@@ -74,7 +131,7 @@ kern_return_t do_bootstrap(bool force) {
         pid_t pid;
         posix_spawn(&pid, "/bin/tar", 0, 0, (char**)&(const char*[]){"/bin/tar", "--preserve-permissions", "--no-overwrite-dir", "-C", "/", "-xvf", [bootstrap UTF8String], NULL}, NULL);
         waitpid(pid, 0, 0);
-        LOG("unpacked bootstrap ");
+        LOG("unpacked bootstrap");
         
         // !!! DO NOT USE TRADITIONAL STASHING !!!
         gsystem("touch /.cydia_no_stash");
@@ -101,13 +158,6 @@ kern_return_t do_bootstrap(bool force) {
         LOG("finished installing bootstrap");
     }
     LOG("Cydia is installed");
-    
-    // copy dropbear.plist
-    NSString *dropbearPlist = [[NSBundle mainBundle] URLForResource:@"dropbear" withExtension:@"plist"].path;
-    unlink("/Library/LaunchDaemons/dropbear.plist");
-    copyfile([dropbearPlist UTF8String], "/Library/LaunchDaemons/dropbear.plist", 0, COPYFILE_ALL);
-    chmod("/Library/LaunchDaemons/dropbear.plist", 0644);
-    chown("/Library/LaunchDaemons/dropbear.plist", 0, 0);
     
     // copy reload script
     unlink("/usr/libexec/reload");

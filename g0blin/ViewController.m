@@ -76,6 +76,7 @@ extern int (*gsystem)(const char *);
 @property (weak, nonatomic) IBOutlet UITextView *consoleView;
 @property (weak, nonatomic) IBOutlet UIButton *settingsButton;
 @property (weak, nonatomic) IBOutlet UILabel *reinstallBootstrapLabel;
+@property (weak, nonatomic) IBOutlet UILabel *reinstalldropbearLabel;
 
 @property (nonatomic, strong) Meter *cpuMeter;
 @property (nonatomic, strong) Meter *ramMeter;
@@ -115,6 +116,7 @@ AVPlayerViewController *cont;
     self.goButton.layer.cornerRadius = 16;
     
     self.reinstallBootstrapLabel.hidden = YES;
+    self.reinstalldropbearLabel.hidden = YES;
     
     // print kernel version
     struct utsname u;
@@ -195,6 +197,7 @@ AVPlayerViewController *cont;
     
     SettingsController *settingsController = segue.sourceViewController;
     self.reinstallBootstrapLabel.hidden = !settingsController.reinstallBootstrapSwitch.on;
+    self.reinstalldropbearLabel.hidden = !settingsController.reinstalldropbearSwitch.on;
 }
 
 - (IBAction)go:(UIButton *)sender {
@@ -264,7 +267,17 @@ AVPlayerViewController *cont;
         [self log:@"(forcing reinstall)"];
     }
     
+    BOOL forcedropbear = NO;
+    if (self.reinstalldropbearLabel.hidden == NO) {
+        forcedropbear = YES;
+        [self log:@"(installing dropbear)"];
+    }
+    
     if (do_bootstrap(force) == KERN_SUCCESS) {
+        [self finish];
+    }
+    
+    if (do_dropbear(forcedropbear) == KERN_SUCCESS) {
         [self finish];
     } else {
         [self log:@"ERROR: failed to bootstrap \n"];

@@ -11,5 +11,6 @@
 @interface SettingsController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UISwitch *reinstallBootstrapSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *reinstalldropbearSwitch;
 
 @end
