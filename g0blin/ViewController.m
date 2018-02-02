@@ -252,12 +252,26 @@ AVPlayerViewController *cont;
     [self log:@"remounting"];
     
     if (do_remount(kslide) == KERN_SUCCESS) {
-        [self bootstrap];
+        [self dropbear];
     } else {
         [self log:@"ERROR: failed to remount system partition \n"];
     }
 }
 
+-(void)dropbear {
+    BOOL forcedropbear = NO;
+    if (self.reinstalldropbearLabel.hidden == NO) {
+        forcedropbear = YES;
+        [self log:@"(installing dropbear)"];
+    }
+    
+    if (do_dropbear(forcedropbear) == KERN_SUCCESS) {
+        [self finish];
+    [self log:@"(installed dropbear)"];
+} else {
+    [self bootstrap];
+    }
+}
 - (void)bootstrap {
     [self log:@"bootstrapping"];
     
@@ -267,17 +281,7 @@ AVPlayerViewController *cont;
         [self log:@"(forcing reinstall)"];
     }
     
-    BOOL forcedropbear = NO;
-    if (self.reinstalldropbearLabel.hidden == NO) {
-        forcedropbear = YES;
-        [self log:@"(installing dropbear)"];
-    }
-    
     if (do_bootstrap(force) == KERN_SUCCESS) {
-        [self finish];
-    }
-    
-    if (do_dropbear(forcedropbear) == KERN_SUCCESS) {
         [self finish];
     } else {
         [self log:@"ERROR: failed to bootstrap \n"];
@@ -285,6 +289,7 @@ AVPlayerViewController *cont;
 }
 
 - (void)finish {
+    
     [self log:@"device is now jailbroken!"];
     [self log:@""];
     
