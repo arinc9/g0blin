@@ -1,6 +1,3 @@
-## If you wanna use latest version of dropbear (2017.75)
-I've compiled and added them in the release tab.
-
 # g0blin
 
 a work-in-progress jailbreak for iOS 10.3 - 10.3.3
